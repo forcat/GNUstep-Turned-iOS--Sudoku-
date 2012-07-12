@@ -3,7 +3,7 @@
 ###The Aim
 The aim is to produce an iPhone App. This iPhone app to be precise:
 
-![Mock-Up Image](http://s12.postimage.org/jmxb17smz/untitled.png)
+![Mock-Up Image](http://cloud.github.com/downloads/fmorrow/GNUstep-Turned-iOS--Sudoku-/untitled.bmp)
 
 Features should include:
 - Local file saving (Originally Implemented)
