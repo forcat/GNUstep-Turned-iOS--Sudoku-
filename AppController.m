@@ -6,6 +6,11 @@
 
 #include "AppController.h"
 
+#define _BTN_EASY_ 0
+#define _BTN_MEDI_ 1
+#define _BTN_HARD_ 2
+
+
 @implementation AppController
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -40,10 +45,13 @@
   [easy setFont:[NSFont labelFontOfSize:36]];
   [easy sizeToFit];
   [easy setTarget: self];
-  [easy setAction: @selector(setEasy:)];
+  [easy setAction: @selector(setDiff:)];
+  easy.tag = _BTN_EASY_;
+  
   size = [easy frame].size;
   [easy setFrame: NSMakeRect(5, 520, size.width, size.height)];
   [easy setState: 1];
+
   //Set up medium button
   medium = [NSButton new];
   [medium setButtonType:NSRadioButton];
@@ -51,10 +59,13 @@
   [medium setFont:[NSFont labelFontOfSize:36]];
   [medium sizeToFit];
   [medium setTarget: self];
-  [medium setAction: @selector(setMedium:)];
+  [medium setAction: @selector(setDiff:)];
+  medium.tag = _BTN_MEDI_;
+
   size = [medium frame].size;
   [medium setFrame: NSMakeRect(180, 520, size.width, size.height)];
   [medium setState:0];
+
   //Set up hard button
   hard = [NSButton new];
   [hard setButtonType:NSRadioButton];
@@ -62,7 +73,9 @@
   [hard setFont:[NSFont labelFontOfSize:36]];
   [hard sizeToFit];
   [hard setTarget: self];
-  [hard setAction: @selector(setHard:)];
+  [hard setAction: @selector(setDiff:)];
+  hard.tag = _BTN_HARD_;
+
   size = [hard frame].size;
   [hard setFrame: NSMakeRect(400, 520, size.width, size.height)];
   [hard setState:0];
@@ -112,6 +125,7 @@
   [file addItemWithTitle: @"Save"
 	action: @selector (presentSaveMenu:)
 	keyEquivalent: @"s"];
+	
   //Set up main menu's sub-menu "Difficulty"
   difficulty = [[NSMenu alloc] init];
   [difficulty addItemWithTitle: @"Easy"
@@ -185,13 +199,24 @@
   
   NSInteger i=0, j=0;
   
-  for(; i < 9; i++ )
+  /* TODO:
+  ** - This demonstrates the file schema, will refactor this. No need to
+  ** designate numbers with a 'P' before their presence in the source file;
+  ** a simple check to see if they're a number would suffice. (1)
+  */
+  
+  
+  for(; i < 9; i+=1 )
   {
     j = 0;
-    for(; j < 9; j++ )
+    for(; j < 9; j+=1 )
     {
       temp = [data characterAtIndex: charIndex ];
       //P's are puzzle defined
+      /* (1) - rather than check for P, check for a number -
+      **  and then do the usual placing it in the cell and
+      **  stopping the cell from being editable.
+      */
       if( temp == 'P' )
       {
 	charIndex += 1;
@@ -201,7 +226,7 @@
 	[[board cellAtRow: i column:j] setStringValue: [NSString stringWithFormat: @"%c", temp]];
         [[board cellAtRow:i column:j] setEditable: NO];
       }
-
+      //whats the differentiation between X and U? O_o
       else
       {
 	charIndex += 1;
@@ -214,12 +239,12 @@
         }
         //otherwise, place the users number into the square
         else
-        {
+        { /* users number is U? O_o */
 	  [[board cellAtRow:i column:j] setStringValue: [NSString stringWithFormat: @"%c", temp]];
-        }
+        } /* why this.. if? you could still setEditable! */
  	if (![[board cellAtRow:i column:j] isEditable])
 	{
-	  [[board cellAtRow:i column:j] setEditable: YES];
+	  [[board cellAtRow:i column:j] setEditable: YES];	
 	}
       }
       charIndex += 1;
@@ -228,6 +253,7 @@
   [board selectAll:nil];
 }
 
+
 ////////////////////////////////////////////////////////////////////////////////
 /// @fn setEasy: (id)sender
 /// @brief sets the current difficulty to easy
@@ -235,52 +261,34 @@
 /// @post the AppController's current difficulty is set to easy/novice
 /// @param sender
 ////////////////////////////////////////////////////////////////////////////////
--(void) setEasy: (id)sender
+-(void) setDiff: (id)sender
 {
-  NSLog(@"SET EASY!");
-  [easy setState:1];
-  [medium setState:0];
-  [hard setState:0];
-
-  RELEASE(current_diff);
-  current_diff = @"novice";
+	[easy setState:0];
+	[medium setState:0];
+	[hard setState:0];
+	RELEASE(current_diff);
+	
+	NSButton *clicked = (NSButton *) sender;
+	
+	switch( clicked.tag )
+	{
+		case _BTN_EASY_:
+			[easy setState:1];
+			current_diff = @"novice";
+			break;
+			
+		case _BTN_MEDI_:
+			[medium setState:1];
+			current_diff = @"intermediate";
+			break;
+			
+		case _BTN_HARD_:
+			[medium setState:1];
+			current_diff = @"expert";
+			break;
+	}
 }
 
-////////////////////////////////////////////////////////////////////////////////
-/// @fn setMedium: (id)sender
-/// @brief sets the current difficulty to medium
-/// @pre none
-/// @post the AppController's current difficulty is set to medium/intermediate
-/// @param sender
-////////////////////////////////////////////////////////////////////////////////
--(void) setMedium: (id)sender
-{
-  NSLog(@"SET MEDIUM!");
-  [easy setState:0];
-  [medium setState:1];
-  [hard setState:0];
-
-  RELEASE(current_diff);
-  current_diff = @"intermediate";
-}
-
-////////////////////////////////////////////////////////////////////////////////
-/// @fn setHard: (id)sender
-/// @brief sets the current difficulty to hard
-/// @pre none
-/// @post the AppController's current difficulty is set to hard/expert
-/// @param sender
-////////////////////////////////////////////////////////////////////////////////
--(void) setHard: (id)sender
-{
-  NSLog(@"SET HARD!");
-  [easy setState:0];
-  [medium setState:0];
-  [hard setState:1];
-
-  RELEASE(current_diff);
-  current_diff = @"expert";
-}
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @fn loadNewGame: (id)sender
@@ -306,7 +314,8 @@
   }
   @catch(NSException *e)
   {
-    NSLog(@"%@ \n%@", [e name], [e reason]);
+   /*perhaps display a dialog explaining error? */
+    NSLog(@"%@ \n%@", [e name], [e reason]); 
   }
 
   RELEASE(fileName);
@@ -368,10 +377,10 @@
 
   [fileSelector runModal];
 
-  for(; i < 9; i++ )
+  for(; i < 9; i+=1 )
   {
     j = 0;
-    for(; j < 9; j++ )
+    for(; j < 9; j+=1 )
     {
       if( ![[board cellAtRow: i column: j] isEditable] )
       {

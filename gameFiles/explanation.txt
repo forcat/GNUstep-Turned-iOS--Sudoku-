@@ -1,0 +1,23 @@
+UXP5UX UXUXUX UXUXUX 
+UXUXUX UXP1UX P4P9P2 
+UXUXUX P4P7UX UXP5P6 
+
+UXP9UX UXUXP1 UXUXP7
+UXP6UX P9UXP7 UXP8UX
+P4UXUX P3UXUX UXP6UX 
+
+P8P4UX UXP9P3 UXUXUX
+P1P3P2 UXP6UX UXUXUX
+UXUXUX UXUXUX UXP3UX
+
+P = followed by num
+X = blank				[blank] editable
+U = "Users number"		[blank] editable - FOR SAVED GAME?
+
+So; all pre-defined numbers are suffixed with 'P' - ex. 'P5' = 5
+all user defined numbers = 'UX'; this allows game saving!
+
+When saved this could be 'U5'; meaning that the user has specified '5' for that box
+but as it's user defined; it's still editable.
+
+jEDIT ftw

@@ -119,9 +119,7 @@
 -(void) applicationDidFinishLaunching: (NSNotification *) notification;
 -(void) open: (NSString*) fileName;
 -(void) loadNewGame: (id)sender;
--(void) setEasy: (id)sender;
--(void) setMedium: (id)sender;
--(void) setHard: (id)sender;
+-(void) setDiff: (id)sender;
 -(void) presentOpenMenu:(id)sender;
 -(void) solve: (id)sender;
 
