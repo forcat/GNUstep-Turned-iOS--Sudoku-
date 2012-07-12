@@ -43,9 +43,11 @@ The other *really cool* aspect of this is that I can work on the Objective-C cod
 **The plan is to convert this to run on an iPhone, right?**
 Yes.. ermm... in a roundabout way. Before this happens I need (or want too anyway) make a few additions and modifications to the code. 
 
-**The original repo was GPL right; what's the deal with licensing of this code?** Obviously the same licensing applies, do as you please and share the love.
+**The original repo was GPL right; what's the deal with licensing of this code?**
+Obviously the same licensing applies, do as you please and share the love.
 
-**Even if it goes on the App Store?** Yes! Despite the obligations to GPL the code due to the codebase I've inherited from, I would do it anyway! Realistically, if I didn't want to GPL the code I could just re-implement all the features myself; however there seems to be a bit of a lack of _complete native (Objective-C/iOS SDK) example applications_. So you can add one to the list!
+**Even if it goes on the App Store?**
+Yes! Despite the obligations to GPL the code due to the codebase I've inherited from, I would do it anyway! Realistically, if I didn't want to GPL the code I could just re-implement all the features myself; however there seems to be a bit of a lack of _complete native (Objective-C/iOS SDK) example applications_. So you can add one to the list!
 
 ###Progress Log
 
