@@ -3,15 +3,15 @@
 ###The Aim
 The aim is to produce an iPhone App. This iPhone app to be precise:
 
+![Mock-Up Image](http://s12.postimage.org/jmxb17smz/untitled.png)
+
 Features should include:
 - Local file saving (Originally Implemented)
 - Downloadable puzzles from the internet
 - Nice User Interface
 - Multiple difficulties (Originally Implemented)
 
-File saving and multiple difficulties is implemented through the original codebase I forked. Naturally this code will require substantial modification for use on an iPhone!
-
-![Mock-Up Image](http://s12.postimage.org/jmxb17smz/untitled.png)
+File saving and multiple difficulties are implemented through the original codebase I forked. Naturally this code will require substantial modification for use on an iPhone!
 
 In the mockup you can see the difficulty buttons, a basic grid to demonstrate where exactly the Sudoku game will be and a basic taskbar. (The taskbar will have 4 options - "New", "Open", "Save" and "Download").
 
@@ -47,7 +47,7 @@ Yes.. ermm... in a roundabout way. Before this happens I need (or want too anywa
 Obviously the same licensing applies, do as you please and share the love.
 
 **Even if it goes on the App Store?**
-Yes! Despite the obligations to GPL the code due to the codebase I've inherited from, I would do it anyway! Realistically, if I didn't want to GPL the code I could just re-implement all the features myself; however there seems to be a bit of a lack of _complete native (Objective-C/iOS SDK) example applications_. So you can add one to the list!
+Yes! Despite the obligations that come with having used a GPL codebase (i.e. Any modifications I make are required to be GPL compat) I would GPL the code anyway! Realistically, if I didn't want to GPL the code I could just re-implement all the features myself; however there seems to be a bit of a lack of _complete native (Objective-C/iOS SDK) example applications_. So you can add one to the list!
 
 ###Progress Log
 
