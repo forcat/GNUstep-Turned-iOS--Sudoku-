@@ -4,14 +4,14 @@
 The aim is to produce an iPhone App. This iPhone app to be precise:
 
 Features should include:
-- Local file saving
+- Local file saving (Originally Implemented)
 - Downloadable puzzles from the internet
 - Nice User Interface
-- Multiple difficulties
+- Multiple difficulties (Originally Implemented)
 
 File saving and multiple difficulties is implemented through the original codebase I forked. Naturally this code will require substantial modification for use on an iPhone!
 
-mockup>
+![Mock-Up Image](http://s12.postimage.org/jmxb17smz/untitled.png)
 
 In the mockup you can see the difficulty buttons, a basic grid to demonstrate where exactly the Sudoku game will be and a basic taskbar. (The taskbar will have 4 options - "New", "Open", "Save" and "Download").
 
